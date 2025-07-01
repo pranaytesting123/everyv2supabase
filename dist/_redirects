@@ -1,0 +1,4 @@
+# Handle admin panel route specifically
+/admin-secret-panel /index.html 200
+# Handle all other routes
+/* /index.html 200
