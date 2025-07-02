@@ -20,12 +20,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
       <Link to={`/product/${product.id}`} onClick={handleProductClick}>
-        <div className="relative overflow-hidden">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+        <div className="relative overflow-hidden bg-gray-50">
+          <div className="aspect-square w-full">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-2"
+            />
+          </div>
           <div className="absolute top-2 right-2">
             <span className="bg-green-600 text-white text-xs font-medium px-2 py-1 rounded-full">
               {product.collection}

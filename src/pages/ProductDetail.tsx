@@ -45,7 +45,7 @@ const ProductDetail: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
               {/* Product Image Skeleton */}
               <div className="space-y-4">
-                <div className="w-full h-96 bg-gray-300 rounded-lg animate-pulse"></div>
+                <div className="w-full aspect-square bg-gray-300 rounded-lg animate-pulse"></div>
               </div>
 
               {/* Product Details Skeleton */}
@@ -95,7 +95,7 @@ const ProductDetail: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {[...Array(4)].map((_, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-                  <div className="w-full h-48 bg-gray-300"></div>
+                  <div className="w-full aspect-square bg-gray-300"></div>
                   <div className="p-4">
                     <div className="h-4 bg-gray-300 rounded mb-2"></div>
                     <div className="h-3 bg-gray-300 rounded mb-3"></div>
@@ -177,12 +177,14 @@ Thank you!`;
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
             {/* Product Image */}
             <div className="space-y-4">
-              <div className="relative">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-96 object-cover rounded-lg"
-                />
+              <div className="relative bg-gray-50 rounded-lg">
+                <div className="aspect-square w-full">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain rounded-lg p-4"
+                  />
+                </div>
                 {product.featured && (
                   <div className="absolute top-4 left-4">
                     <span className="bg-orange-500 text-white text-sm font-medium px-3 py-1 rounded-full">
@@ -269,12 +271,14 @@ Thank you!`;
                     onClick={() => handleRelatedProductClick(relatedProduct.id)}
                     className="w-full text-left"
                   >
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={relatedProduct.image}
-                        alt={relatedProduct.name}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                    <div className="relative overflow-hidden bg-gray-50">
+                      <div className="aspect-square w-full">
+                        <img
+                          src={relatedProduct.image}
+                          alt={relatedProduct.name}
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-2"
+                        />
+                      </div>
                       <div className="absolute top-2 right-2">
                         <span className="bg-green-600 text-white text-xs font-medium px-2 py-1 rounded-full">
                           {relatedProduct.collection}

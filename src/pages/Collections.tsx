@@ -22,12 +22,14 @@ const Collections: React.FC = () => {
             
             return (
               <div key={collection.id} className="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={collection.image}
-                    alt={collection.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                <div className="relative overflow-hidden bg-gray-50">
+                  <div className="aspect-video w-full">
+                    <img
+                      src={collection.image}
+                      alt={collection.name}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h2 className="text-2xl font-bold text-white mb-1">{collection.name}</h2>
@@ -41,11 +43,11 @@ const Collections: React.FC = () => {
                   {/* Preview Products */}
                   <div className="grid grid-cols-3 gap-2 mb-4">
                     {collectionProducts.slice(0, 3).map((product) => (
-                      <div key={product.id} className="aspect-square">
+                      <div key={product.id} className="aspect-square bg-gray-50 rounded">
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-full object-cover rounded"
+                          className="w-full h-full object-contain rounded p-1"
                         />
                       </div>
                     ))}

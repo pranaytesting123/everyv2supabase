@@ -122,18 +122,20 @@ const HeroSection: React.FC = () => {
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-amber-400 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
               <div className="relative bg-white rounded-3xl p-8 shadow-2xl transform group-hover:-rotate-1 transition-transform duration-500">
-                <img
-                  key={heroProduct.image} // Force re-render when image changes
-                  src={heroProduct.image}
-                  alt={heroProduct.title}
-                  className="w-full h-96 object-cover rounded-2xl shadow-lg"
-                  onLoad={() => console.log('Hero image loaded:', heroProduct.image)} // Debug log
-                  onError={(e) => {
-                    console.error('Hero image failed to load:', heroProduct.image);
-                    // Fallback to a default image if the current one fails
-                    e.currentTarget.src = 'https://images.pexels.com/photos/6542652/pexels-photo-6542652.jpeg?auto=compress&cs=tinysrgb&w=1200';
-                  }}
-                />
+                <div className="aspect-square w-full">
+                  <img
+                    key={heroProduct.image} // Force re-render when image changes
+                    src={heroProduct.image}
+                    alt={heroProduct.title}
+                    className="w-full h-full object-contain rounded-2xl"
+                    onLoad={() => console.log('Hero image loaded:', heroProduct.image)} // Debug log
+                    onError={(e) => {
+                      console.error('Hero image failed to load:', heroProduct.image);
+                      // Fallback to a default image if the current one fails
+                      e.currentTarget.src = 'https://images.pexels.com/photos/6542652/pexels-photo-6542652.jpeg?auto=compress&cs=tinysrgb&w=1200';
+                    }}
+                  />
+                </div>
                 
                 {/* Floating Elements */}
                 <div className="absolute -top-4 -right-4 bg-green-600 text-white p-3 rounded-full shadow-lg animate-bounce">

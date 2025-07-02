@@ -51,11 +51,11 @@ const CollectionDetail: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Collection Image */}
             <div className="relative">
-              <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-50">
                 <img
                   src={collection.image}
                   alt={collection.name}
-                  className="w-full h-96 object-cover"
+                  className="w-full h-full object-contain p-4"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-lg"></div>
