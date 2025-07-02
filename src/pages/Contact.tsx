@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MessageCircle, MapPin, Clock, Send } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ const Contact: React.FC = () => {
     message: '',
   });
 
-  import emailjs from 'emailjs-com';
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
