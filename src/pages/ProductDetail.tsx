@@ -117,7 +117,7 @@ Thank you!`;
                         <Star key={i} className="h-5 w-5 fill-current" />
                       ))}
                     </div>
-                    <span className="ml-2 text-gray-600 text-sm">(4.8/5)</span>
+                    
                   </div>
                 </div>
               </div>
