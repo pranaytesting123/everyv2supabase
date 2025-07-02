@@ -112,11 +112,7 @@ Thank you!`;
                 <div className="flex items-center space-x-4 mb-4">
                   <span className="text-3xl font-bold text-green-600">₹{product.price.toFixed(2)}</span>
                   <div className="flex items-center">
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-current" />
-                      ))}
-                    </div>
+                    
                     
                   </div>
                 </div>
