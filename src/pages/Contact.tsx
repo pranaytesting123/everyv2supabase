@@ -48,8 +48,8 @@ const Contact: React.FC = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
                     <p className="text-gray-600">Call us for immediate assistance</p>
-                    <a href="tel:+91-9347575947" className="text-blue-600 hover:underline font-medium">
-                      +91-9347575947
+                    <a href="tel:+91-9248788585" className="text-blue-600 hover:underline font-medium">
+                      +91-9248788585
                     </a>
                   </div>
                 </div>
@@ -96,20 +96,6 @@ const Contact: React.FC = () => {
                       123 Business District<br />
                       Mumbai, Maharashtra 400001<br />
                       India
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-100 rounded-full p-3">
-                    <Clock className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Business Hours</h3>
-                    <p className="text-gray-600">
-                      Monday - Friday: 9:00 AM - 7:00 PM<br />
-                      Saturday: 10:00 AM - 6:00 PM<br />
-                      Sunday: 11:00 AM - 5:00 PM
                     </p>
                   </div>
                 </div>
