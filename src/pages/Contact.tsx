@@ -10,12 +10,36 @@ const Contact: React.FC = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission (could integrate with email service)
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-  };
+  import emailjs from 'emailjs-com';
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const serviceID = 'service_xtmlqfh';
+  const templateID = 'template_q4xlez8';
+  const userID = '_VW7USXikopO8YuyA'; // EmailJS public API key
+
+  try {
+    const result = await emailjs.send(
+      serviceID,
+      templateID,
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      userID
+    );
+    alert('Message sent!');
+    setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
+  } catch (error) {
+    console.error(error);
+    alert('Failed to send the message. Try again later.');
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
