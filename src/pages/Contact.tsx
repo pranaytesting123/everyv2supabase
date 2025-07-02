@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
                     <h3 className="font-semibold text-gray-900">WhatsApp</h3>
                     <p className="text-gray-600">Quick responses via WhatsApp</p>
                     <a 
-                      href="https://wa.me/919347575947" 
+                      href="https://wa.me/919248788585" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-green-600 hover:underline font-medium"
