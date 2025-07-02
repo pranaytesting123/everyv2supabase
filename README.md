@@ -1,4 +1,4 @@
-# Everything Coconut - Supabase Integration
+# CocoManthra - Supabase Integration
 
 A modern e-commerce catalog application with real-time data sync and automatic deployments.
 

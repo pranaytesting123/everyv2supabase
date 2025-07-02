@@ -34,6 +34,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
+            {/* Icon placeholder - you can replace this with your custom icon */}
             <div className="bg-green-100 rounded-full p-2">
               <Leaf className="h-6 w-6 text-green-600" />
             </div>
@@ -75,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
           {/* Contact Button */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:+91-XXXXX-XXXXX"
+              href="tel:+91-9248788585"
               className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
             >
               <Phone className="h-4 w-4" />
@@ -124,11 +125,11 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
               </Link>
             ))}
             <a
-              href="tel:+91-XXXXX-XXXXX"
+              href="tel:+91-9248788585"
               className="flex items-center space-x-2 px-3 py-2 text-green-600 hover:bg-green-50 rounded-md transition-colors"
             >
               <Phone className="h-4 w-4" />
-              <span>Call Us: +91-XXXXX-XXXXX</span>
+              <span>Call Us: +91-9248788585</span>
             </a>
           </div>
         </div>

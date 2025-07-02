@@ -44,8 +44,19 @@ const ProductDetail: React.FC = () => {
     .slice(0, 4);
 
   const handleWhatsApp = () => {
-    const message = `Hi! I'm interested in ${product.name} (₹${product.price}). Can you please provide more details?`;
-    const whatsappUrl = `https://wa.me/919347575947?text=${encodeURIComponent(message)}`;
+    const message = `Hi! I'm interested in ordering this product from CocoManthra:
+
+🌴 *${product.name}*
+💰 Price: ₹${product.price}
+📦 Collection: ${product.collection}
+
+📝 Description: ${product.description}
+
+Could you please provide more details about availability, shipping, and payment options?
+
+Thank you!`;
+    
+    const whatsappUrl = `https://wa.me/919248788585?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -124,11 +135,11 @@ const ProductDetail: React.FC = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <a
-                      href="tel:+91-9347575947"
+                      href="tel:+91-9248788585"
                       className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
                     >
                       <Phone className="h-5 w-5" />
-                      <span>Call: +91-9347575947</span>
+                      <span>Call: +91-9248788585</span>
                     </a>
                     <button
                       onClick={handleWhatsApp}

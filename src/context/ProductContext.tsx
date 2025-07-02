@@ -51,7 +51,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
       ctaLink: '/products?collection=Bowls & Tableware',
       price: 45.99
     },
-    brandName: 'Everything Coconut',
+    brandName: 'CocoManthra',
     tagline: 'Sustainable Handmade Coconut Products'
   });
   const [loading, setLoading] = useState(true);

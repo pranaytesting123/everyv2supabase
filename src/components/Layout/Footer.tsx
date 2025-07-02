@@ -87,16 +87,16 @@ const Footer: React.FC = () => {
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-green-400" />
                 <a 
-                  href="tel:+91-9347575947" 
+                  href="tel:+91-9248788585" 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  +91-9347575947
+                  +91-9248788585
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageCircle className="h-5 w-5 text-green-400" />
                 <a 
-                  href="https://wa.me/919347575947" 
+                  href="https://wa.me/919248788585" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors"
@@ -107,10 +107,10 @@ const Footer: React.FC = () => {
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-green-400" />
                 <a 
-                  href="mailto:hello@everythingcoconut.com" 
+                  href="mailto:hello@cocomanthra.com" 
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  hello@everythingcoconut.com
+                  hello@cocomanthra.com
                 </a>
               </div>
             </div>

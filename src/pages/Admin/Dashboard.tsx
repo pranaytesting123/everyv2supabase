@@ -102,7 +102,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-2xl font-bold text-gray-900">Everything Coconut Admin</h1>
+            <h1 className="text-2xl font-bold text-gray-900">CocoManthra Admin</h1>
             <div className="flex items-center space-x-4">
               <button
                 onClick={handleRefreshData}
