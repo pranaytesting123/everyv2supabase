@@ -46,8 +46,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
       id: 'hero-1',
       title: 'Handcrafted Coconut Bowl Set',
       description: 'Transform your dining experience with our beautifully handcrafted coconut bowls.',
-      image: 'https://images.pexels.com/photos/6542652/pexels-photo-6542652.jpeg?auto=compress&cs=tinysrgb&w=1200
-        ',
+      image: 'https://images.pexels.com/photos/6542652/pexels-photo-6542652.jpeg?auto=compress&cs=tinysrgb&w=1200',
       ctaText: 'Shop Coconut Bowls',
       ctaLink: '/products?collection=Bowls & Tableware',
       price: 45.99
