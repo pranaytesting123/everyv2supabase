@@ -6,11 +6,79 @@ import ProductGrid from '../components/Product/ProductGrid';
 
 const CollectionDetail: React.FC = () => {
   const { collection: collectionName } = useParams<{ collection: string }>();
-  const { collections, getProductsByCollection } = useProducts();
+  const { collections, getProductsByCollection, loading } = useProducts();
   
   const decodedCollectionName = collectionName ? decodeURIComponent(collectionName) : '';
   const collection = collections.find(c => c.name === decodedCollectionName);
   const collectionProducts = getProductsByCollection(decodedCollectionName);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        {/* Breadcrumb Skeleton */}
+        <div className="bg-white shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex items-center space-x-2">
+              <div className="h-4 bg-gray-300 rounded w-12 animate-pulse"></div>
+              <span className="text-gray-400">/</span>
+              <div className="h-4 bg-gray-300 rounded w-20 animate-pulse"></div>
+              <span className="text-gray-400">/</span>
+              <div className="h-4 bg-gray-300 rounded w-32 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Collection Hero Skeleton */}
+        <div className="bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="aspect-video bg-gray-300 rounded-lg animate-pulse"></div>
+              <div className="space-y-6">
+                <div>
+                  <div className="h-10 bg-gray-300 rounded w-3/4 mb-4 animate-pulse"></div>
+                  <div className="h-6 bg-gray-300 rounded w-full mb-2 animate-pulse"></div>
+                  <div className="h-6 bg-gray-300 rounded w-5/6 animate-pulse"></div>
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-gray-100 rounded-lg p-4 animate-pulse">
+                    <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                    <div className="h-8 bg-gray-300 rounded"></div>
+                  </div>
+                  <div className="bg-gray-100 rounded-lg p-4 animate-pulse">
+                    <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                    <div className="h-8 bg-gray-300 rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Products Grid Skeleton */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mb-8">
+            <div className="h-8 bg-gray-300 rounded w-64 mb-2 animate-pulse"></div>
+            <div className="h-6 bg-gray-300 rounded w-48 animate-pulse"></div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {[...Array(8)].map((_, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div className="w-full aspect-square bg-gray-300"></div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-3 bg-gray-300 rounded mb-3"></div>
+                  <div className="flex justify-between items-center">
+                    <div className="h-6 bg-gray-300 rounded w-20"></div>
+                    <div className="h-4 bg-gray-300 rounded w-16"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!collection) {
     return (

@@ -4,7 +4,39 @@ import { ArrowRight } from 'lucide-react';
 import { useProducts } from '../context/ProductContext';
 
 const Collections: React.FC = () => {
-  const { collections, getProductsByCollection } = useProducts();
+  const { collections, getProductsByCollection, loading } = useProducts();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header Skeleton */}
+          <div className="text-center mb-12">
+            <div className="h-10 bg-gray-300 rounded w-80 mx-auto mb-4 animate-pulse"></div>
+            <div className="h-6 bg-gray-300 rounded w-96 mx-auto animate-pulse"></div>
+          </div>
+
+          {/* Collections Grid Skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden animate-pulse">
+                <div className="aspect-video w-full bg-gray-300"></div>
+                <div className="p-6">
+                  <div className="h-4 bg-gray-300 rounded mb-4"></div>
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="aspect-square bg-gray-300 rounded"></div>
+                    <div className="aspect-square bg-gray-300 rounded"></div>
+                    <div className="aspect-square bg-gray-300 rounded"></div>
+                  </div>
+                  <div className="h-12 bg-gray-300 rounded"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">

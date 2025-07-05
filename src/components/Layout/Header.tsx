@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, Menu, X, Phone } from 'lucide-react';
-import { useProducts } from '../../context/ProductContext';
 
 interface HeaderProps {
   onSearch: (query: string) => void;
@@ -31,46 +30,38 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo and Brand Name */}
           <Link to="/" className="flex items-center space-x-3">
-            {/* Brand Logo Image - Replace src with your logo */}
+            {/* Brand Logo Image */}
             <div className="flex-shrink-0">
               <img
                 src="/logo.png"
                 alt="CocoManthra Logo"
                 className="h-10 w-10 object-contain"
                 onError={(e) => {
-                  // Fallback to icon if image doesn't exist
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
                 }}
               />
-              {/* Fallback icon (hidden by default) */}
+              {/* Fallback icon */}
               <div className="hidden bg-green-100 rounded-full p-2 h-10 w-10 flex items-center justify-center">
                 <div className="h-6 w-6 bg-green-600 rounded-full"></div>
               </div>
             </div>
             
-            {/* Brand Name Image - Replace src with your brand name image */}
-            <div className="flex flex-col">
+            {/* Brand Name Image */}
+            <div>
               <img
                 src="/brand-name.png"
                 alt="CocoManthra"
-                className="h-6 object-contain"
+                className="h-8 object-contain"
                 onError={(e) => {
-                  // Fallback to text if image doesn't exist
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
                 }}
               />
-              {/* Fallback text (hidden by default) */}
-              <div className="hidden">
-                <span className="text-xl font-bold text-gray-900">CocoManthra</span>
-                <div className="text-xs text-green-600 font-medium">Sustainable Handmade Coconut Products</div>
-              </div>
-              
-              {/* Tagline - you can replace this with an image too if needed */}
-              <div className="text-xs text-green-600 font-medium">Sustainable Handmade Coconut Products</div>
+              {/* Fallback text */}
+              <span className="hidden text-xl font-bold text-gray-900">CocoManthra</span>
             </div>
           </Link>
 

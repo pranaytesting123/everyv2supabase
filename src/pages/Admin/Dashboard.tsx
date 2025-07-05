@@ -11,7 +11,7 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
-  const { products, collections, siteSettings, deleteProduct, deleteCollection, error, refreshData } = useProducts();
+  const { products, collections, siteSettings, deleteProduct, deleteCollection, error, refreshData, loading } = useProducts();
   const [showAddProductForm, setShowAddProductForm] = useState(false);
   const [showAddCollectionForm, setShowAddCollectionForm] = useState(false);
   const [showHeroForm, setShowHeroForm] = useState(false);
@@ -20,6 +20,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState<'products' | 'collections' | 'hero'>('hero');
   const [buildTriggering, setBuildTriggering] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -89,12 +90,66 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
   };
 
   const handleRefreshData = async () => {
+    setRefreshing(true);
     try {
       await refreshData();
     } catch (error) {
       alert('Failed to refresh data. Please try again.');
+    } finally {
+      setRefreshing(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        {/* Header Skeleton */}
+        <header className="bg-white shadow-sm border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <div className="h-8 bg-gray-300 rounded w-48 animate-pulse"></div>
+              <div className="flex items-center space-x-4">
+                <div className="h-10 bg-gray-300 rounded w-24 animate-pulse"></div>
+                <div className="h-10 bg-gray-300 rounded w-32 animate-pulse"></div>
+                <div className="h-10 bg-gray-300 rounded w-20 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Stats Skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {[...Array(4)].map((_, index) => (
+              <div key={index} className="bg-white rounded-lg shadow p-6 animate-pulse">
+                <div className="flex items-center">
+                  <div className="h-8 w-8 bg-gray-300 rounded"></div>
+                  <div className="ml-4 flex-1">
+                    <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                    <div className="h-8 bg-gray-300 rounded w-16"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Content Skeleton */}
+          <div className="bg-white rounded-lg shadow">
+            <div className="border-b border-gray-200 p-6">
+              <div className="h-6 bg-gray-300 rounded w-48 animate-pulse"></div>
+            </div>
+            <div className="p-6">
+              <div className="space-y-4">
+                {[...Array(5)].map((_, index) => (
+                  <div key={index} className="h-16 bg-gray-100 rounded animate-pulse"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -106,11 +161,12 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
             <div className="flex items-center space-x-4">
               <button
                 onClick={handleRefreshData}
-                className="flex items-center space-x-2 text-gray-700 hover:text-green-600 transition-colors p-2 rounded-md hover:bg-gray-100"
+                disabled={refreshing}
+                className="flex items-center space-x-2 text-gray-700 hover:text-green-600 transition-colors p-2 rounded-md hover:bg-gray-100 disabled:opacity-50"
                 title="Refresh Data"
               >
-                <RefreshCw className="h-4 w-4" />
-                <span className="hidden sm:inline">Refresh</span>
+                <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+                <span className="hidden sm:inline">{refreshing ? 'Refreshing...' : 'Refresh'}</span>
               </button>
               <button
                 onClick={handleManualBuildTrigger}

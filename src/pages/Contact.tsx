@@ -10,37 +10,38 @@ const Contact: React.FC = () => {
     subject: '',
     message: '',
   });
+  const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
 
+    const serviceID = 'service_xtmlqfh';
+    const templateID = 'template_q4xlez8';
+    const userID = '_VW7USXikopO8YuyA';
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  const serviceID = 'service_xtmlqfh';
-  const templateID = 'template_q4xlez8';
-  const userID = '_VW7USXikopO8YuyA'; // EmailJS public API key
-
-  try {
-    const result = await emailjs.send(
-      serviceID,
-      templateID,
-      {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        subject: formData.subject,
-        message: formData.message,
-      },
-      userID
-    );
-    alert('Message sent!');
-    setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
-  } catch (error) {
-    console.error(error);
-    alert('Failed to send the message. Try again later.');
-  }
-};
-
+    try {
+      const result = await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        userID
+      );
+      alert('Message sent!');
+      setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error(error);
+      alert('Failed to send the message. Try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
@@ -104,8 +105,8 @@ const handleSubmit = async (e) => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
                     <p className="text-gray-600">Send us a detailed message</p>
-                    <a href="mailto:info@cataloghub.com" className="text-blue-600 hover:underline font-medium">
-                      info@cataloghub.com
+                    <a href="mailto:hello@cocomanthra.com" className="text-blue-600 hover:underline font-medium">
+                      hello@cocomanthra.com
                     </a>
                   </div>
                 </div>
@@ -145,7 +146,8 @@ const handleSubmit = async (e) => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    disabled={loading}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
                   />
                 </div>
 
@@ -159,7 +161,8 @@ const handleSubmit = async (e) => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    disabled={loading}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -175,7 +178,8 @@ const handleSubmit = async (e) => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  disabled={loading}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
                 />
               </div>
 
@@ -189,7 +193,8 @@ const handleSubmit = async (e) => {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  disabled={loading}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
                 >
                   <option value="">Select a subject</option>
                   <option value="product-inquiry">Product Inquiry</option>
@@ -211,17 +216,28 @@ const handleSubmit = async (e) => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
+                  disabled={loading}
                   placeholder="Please describe your inquiry in detail..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+                disabled={loading}
+                className="w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="h-4 w-4" />
-                <span>Send Message</span>
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
             </form>
           </div>
