@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
               <img
                 src="/logo.png"
                 alt="CocoManthra Logo"
-                className="h-10 w-10 object-contain"
+                className="h-10 w-40 object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
